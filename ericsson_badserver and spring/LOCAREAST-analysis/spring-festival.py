@@ -13,7 +13,7 @@ locareast=pd.read_csv('LOCAREAST.csv')
 local_area2={'OBJECTID':[4600021904,4600021905,4600021906,4600021908,4600021911,4600021912,4600021913,4600021914,4600021915,4600021916,4600021917,4600021918,4600021919,4600022160,4600022161,4600022162,4600022164,4600022167,4600054769,4600054770,4600054771,4600054772,4600054773,4600054774],'市县':['宣城','宣城','宣城','宁国','广德','广德','郎溪','广德','宁国','宁国','旌德','绩溪','泾县','郎溪','广德','宣城','泾县','宣城','广德','泾县','宁国','郎溪','宣城','绩溪']}
 local_area = pd.DataFrame(data=local_area2)
 locareast.EXCHID = locareast.EXCHID.replace(np.nan,"XUCGS6")
-g1=locareast.reset_index().groupby(['OBJECTID','EXCHID'])['NLASATSGS'].idxmax
+g1=locareast.reset_index().groupby(['OBJECTID','EXCHID'])['NLASATSGS'].idxmax()
 g2=locareast.iloc[g1]
 #print(g2)
 g3 = pd.merge(g2, local_area, on="OBJECTID", how="left")
@@ -28,7 +28,7 @@ g4.columns=['MME用户数']
 
 locareast1=pd.read_csv('LOCAREAST1.csv')
 locareast1.EXCHID = locareast1.EXCHID.replace(np.nan,"XUCGS6")
-j1=locareast1.reset_index().groupby(['OBJECTID','EXCHID'])['NLASUBREG'].idxmax
+j1=locareast1.reset_index().groupby(['OBJECTID','EXCHID'])['NLASUBREG'].idxmax()
 j2=locareast1.iloc[j1]
 #print(j2)
 j3 = pd.merge(j2, local_area, on="OBJECTID", how="left")

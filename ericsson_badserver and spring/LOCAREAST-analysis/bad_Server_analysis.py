@@ -11,9 +11,9 @@ locareast=pd.read_csv('LOCAREAST.csv')
 locareast1=pd.read_csv('LOCAREAST1.csv')
 locareast.EXCHID = locareast.EXCHID.replace(np.nan,"XUCGS6")
 locareast1.EXCHID = locareast.EXCHID.replace(np.nan,"XUCGS6")
-g1=locareast.reset_index().groupby(['OBJECTID','EXCHID'])['NLASATSGS'].idxmax
+g1=locareast.reset_index().groupby(['OBJECTID','EXCHID'])['NLASATSGS'].idxmax()
 g2=locareast.iloc[g1]
-j1=locareast1.reset_index().groupby(['OBJECTID','EXCHID'])['NLASUBREG'].idxmax
+j1=locareast1.reset_index().groupby(['OBJECTID','EXCHID'])['NLASUBREG'].idxmax()
 j2=locareast1.iloc[j1]
 #print(g2)
 #print(j2)
@@ -65,7 +65,7 @@ kkk1['寻呼成功率'] = kkk1.apply(lambda x:x['寻呼成功次数']/x['寻呼次数']*100, ax
 ### ############################################################### CSFB寻呼成功率
 csfb=pd.read_csv('CSFB.csv')
 csfb.EXCHID = csfb.EXCHID.replace(np.nan,"XUCGS6")
-f1=csfb.reset_index().groupby(['OBJECTID','EXCHID'])['NLASATSGS'].idxmax
+f1=csfb.reset_index().groupby(['OBJECTID','EXCHID'])['NLASATSGS'].idxmax()
 f2=csfb.iloc[f1]
 '''
 
