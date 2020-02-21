@@ -27,7 +27,7 @@ def sysname_check_event(fp,error_sysname):   # 基本配置:设备名称配置  
 
     if (error_sysname==1) :print("sysname error")
 
-
+123124123123
 
 
 fp = open("BRAS10_cu.log")
