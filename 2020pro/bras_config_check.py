@@ -1,16 +1,13 @@
 import pandas as pd
 import numpy as np
 
-fp = open("BRAS10_cu.log")
-sysname_check_event(fp)
-fp.close()
+error_sysname=0
 
-'''
-基本配置; 设备名称配置  sysname AH***-MB-CMNET-BRAS**-***
-'''
-def sysname_check_event(fp):
-    areacode = ['XUC', 'WUH']
-    brasnumber = ['01', '02', '03', '10']
+
+def sysname_check_event(fp,error_sysname):   # 基本配置:设备名称配置  sysname AH***-MB-CMNET-BRAS**-***
+
+    areacode = ['XUC']
+    brasnumber = ['10']
     brastype = 0  # 后续接口  华为0，
     if brastype == 0:
         brastype0 = '-ME60'
@@ -25,10 +22,17 @@ def sysname_check_event(fp):
                 if (sysnamecheck in line):
                     print(line)
                 else:
-                    global  error_sysname
-                    error_sysname=1
+                    print('123456')
+                    error_sysname= 1
 
     if (error_sysname==1) :print("sysname error")
+
+
+
+
+fp = open("BRAS10_cu.log")
+sysname_check_event(fp,error_sysname)
+fp.close()
 
 
 
