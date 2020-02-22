@@ -27,7 +27,7 @@ can=Canvas(root,width=129, height=45)
 can.place(x=10,y=3)
 can.create_image(65, 0, image=photo, anchor='n')
 welcomewords=Label(root,text='自研BRAS局数据检查工具',font=("黑体", 30, "bold"))
-welcomewords.place(x=140,y=12,width=400,height=30)
+welcomewords.place(x=160,y=12,width=400,height=30)
 
 start_button=Button(None,text='开始',command=quit)
 
