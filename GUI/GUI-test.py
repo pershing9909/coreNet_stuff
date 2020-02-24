@@ -22,12 +22,12 @@ sh = root.winfo_screenheight() #得到屏幕高度
 x = (sw-640) / 2
 y = (sh-360) / 2
 root.geometry('640x360+%d+%d' %(x,y))
-photo = PhotoImage(file="/Users/pershing9909/PycharmProjects/coreNet_stuff/GUI/ffdfds.gif")
+photo = PhotoImage(file="ffdfds.gif")
 can=Canvas(root,width=129, height=45)
 can.place(x=10,y=3)
 can.create_image(65, 0, image=photo, anchor='n')
 welcomewords=Label(root,text='自研BRAS局数据检查工具',font=("黑体", 30, "bold"))
-welcomewords.place(x=160,y=12,width=400,height=30)
+welcomewords.place(x=160,y=12,width=450,height=40)
 
 start_button=Button(None,text='开始',command=quit)
 
