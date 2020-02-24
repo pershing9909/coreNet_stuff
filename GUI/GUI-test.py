@@ -29,7 +29,7 @@ can.create_image(65, 0, image=photo, anchor='n')
 welcomewords=Label(root,text='自研BRAS局数据检查工具',font=("黑体", 30, "bold"))
 welcomewords.place(x=160,y=12,width=400,height=30)
 
-start_button=Button(None,text='开始',command=quit)
+start_button=Button(None,text='开始',command= check_bras_log)
 
 quit_button=Button(None,text='退出',command=quit)
 
