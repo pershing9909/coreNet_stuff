@@ -42,6 +42,14 @@ def time_zone_check(fp):
 
 
 
+
+
+
+
+
+
+
+
 def print_result(check,event):####分项结果打印函数，并实现错误内容标注
     if check:
         # print('pass')
@@ -100,7 +108,7 @@ start_button.place(x=160, y=300)
 quit_button=Button(None,text='退出',command=quit)
 quit_button.place(x=480, y=300)
 #####导出功能按钮，
-# ####按文件夹读取文件，显示文件名
+######按文件夹读取文件，显示文件名
 
 
 
