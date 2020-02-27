@@ -51,7 +51,7 @@ def ntp_server_config(fp):
     return (False)
 
 #检查VTY接口配置
-def VTY_interface(fp):
+#def VTY_interface(fp):
 
 
 
