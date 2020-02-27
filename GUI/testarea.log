@@ -1,3 +1,11 @@
 
 clock timezone beijing add 08:00:00
 sysname AHXUC-MB-CMNET-BRAS01-ME60
+
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service access peer 2999
+ntp-service authentication-keyid 1 authentication-mode md5 cipher @%@%Mt;Z:}hVk<VuS87|Qu{T$7(9@%@%
+ntp-service unicast-server 2.2.2.2 authentication-keyid 1
+ntp-service unicast-server 221.130.175.254 source-interface LoopBack0
+ntp-service unicast-server 221.130.175.253 source-interface LoopBack0

@@ -2,11 +2,9 @@ from tkinter import *
 from PIL import Image
 import sys
 root= Tk()
-###退出
-def quit():
-    sys.exit()
 
-
+#---------------------------------------------------------分项检查
+#检查主机名称
 def sysname_check_event(fp):
     areacode = ['XUC']
     brastype = 0  # 后续接口  华为0，
@@ -31,14 +29,29 @@ def sysname_check_event(fp):
     #     #print("sysname error")
     #     #return (False)
 
+#检查时区设置
 def time_zone_check(fp):
-
     check_time_zone='clock timezone beijing add 08:00:00'
-    #print(fp)
-    for line in list(fp):
-        if(check_time_zone in line):
-            return(True)
-    return(False)
+    timezong=check_words_inline(fp,check_time_zone)
+    return (timezong)
+
+#检查NTP服务器配置
+def ntp_server_config(fp):
+    ntpserver1=check_words_inline(fp,"ntp-service server disable")
+    ntpserver2=check_words_inline(fp,"ntp-service ipv6 server disable")
+    ntpserver3=check_words_inline(fp,"ntp-service unicast-server 221.130.175.254 source-interface LoopBack0")
+    ntpserver4=check_words_inline(fp,"ntp-service unicast-server 221.130.175.253 source-interface LoopBack0")
+    # print(ntpserver1)
+    # print(ntpserver2)
+    # print(ntpserver3)
+    # print(ntpserver4)
+    # print(ntpserver1 and ntpserver2 and ntpserver3 and ntpserver4)
+    if (ntpserver1 and ntpserver2 and ntpserver3 and ntpserver4):
+        return (True)
+    return (False)
+
+#检查VTY接口配置
+def VTY_interface(fp):
 
 
 
@@ -46,11 +59,9 @@ def time_zone_check(fp):
 
 
 
-
-
-
-
-def print_result(check,event):####分项结果打印函数，并实现错误内容标注
+#-------------------------------------------------------全局函数
+####分项结果打印函数，并实现错误内容标注
+def print_result(check,event):
     if check:
         # print('pass')
         result_data_Text.insert(INSERT, event+" check pass \n")
@@ -64,8 +75,18 @@ def print_result(check,event):####分项结果打印函数，并实现错误内�
         result_data_Text.tag_config("tag1", background="yellow", foreground="red")
         result_data_Text.insert(INSERT, "\n")
 
+#检查words在行中是否存在
+def check_words_inline(fp,words):
+    for line in list(fp):
+        if(words in line):
+            return(True)
+    return(False)
 
+###退出
+def quit():
+    sys.exit()
 
+####依次运行函数检查项
 def check_in_line():
     file = open("testarea.log")
     fp = file.readlines()
@@ -74,7 +95,13 @@ def check_in_line():
     print_result(check1, 'sysname')
     check2 = time_zone_check(fp)
     print_result(check2, 'time zone')
+    check3=ntp_server_config(fp)
+    print_result(check3,'Ntp-server config')
     file.close()
+
+
+
+
 
 
 
